@@ -15,6 +15,14 @@ namespace WordFinderApp.Controllers
             var result = wordFinder.Find(request.Matrix);
             return Ok(result);
         }
+
+        [HttpPost("find_trie")]
+        public ActionResult<IList<string>> FindWords_Trie([FromBody] WordFinderRequest request)
+        {
+            var wordFinder = new WordFinderTrie(request.Dictionary);
+            var result = wordFinder.Find(request.Matrix);
+            return Ok(result);
+        }
     }
 
     public class WordFinderRequest
